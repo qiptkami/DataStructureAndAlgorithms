@@ -2,6 +2,7 @@ package com.yiqiandewo.glist;
 
 //广义表的建立  采用的是将广义表划分为"头"和"尾"的模式
 //这些操作以"(((a,b),(c,d)),(e,(f,g),h),z)"形式的字符串为基础.一对括号代表一个表.
+
 public class GList {
     //节点类型
     public static int ATOM = 0;
@@ -15,7 +16,7 @@ public class GList {
     //建立广义表"(((a,b),(c,d)),(e,(f,g),h),z)"这样形式的字符串为内通建立广义表
     //同样采用递归方式。结束条件是空表和原子。
     //递归建立表头和表尾
-    public static GList createGList(GList L,String s) {
+    public static GList createGList(GList L, String s) {
         System.out.println(s);
         GList p = null;  //头
         GList q = null;  //尾
@@ -92,7 +93,6 @@ public class GList {
         String s = "(((a,b),(c,d)),(e,(f,g),h),z)";
         //建表
         L = GList.createGList(L, s);
-
     }
 
 }

@@ -17,11 +17,19 @@ public class HeapSort {
 
     public static void heapSort(int[] arr) {
         buildHeap(arr);
-        for (int i = arr.length-1; i >= 0; i--) {
+        for (int i = arr.length - 1; i >= 0; i--) {
             //交换根节点个最后一个结点的值
             swap(arr, 0, i);
             //交换了会破坏堆
             heapify(arr, 0, i);
+        }
+    }
+
+    private static void buildHeap(int[] arr) {
+        //从下向上构建堆
+        int parent = (arr.length - 1) / 2;
+        for (int i = parent; i >= 0; i--) {
+            heapify(arr, i, arr.length);
         }
     }
 
@@ -36,9 +44,6 @@ public class HeapSort {
      * @param len  每个heapify的数组的大小
      */
     private static void heapify(int[] arr, int i, int len) {
-        if (i > len) {
-            return;
-        }
         int left = 2 * i + 1;
         int right = 2 * i + 2;
         int max = i;
@@ -57,14 +62,6 @@ public class HeapSort {
             heapify(arr, max, len);
         }
 
-    }
-
-    private static void buildHeap(int[] arr) {
-        //从下向上构建堆
-        int parent = (arr.length - 1) / 2;
-        for (int i = parent; i >= 0; i--) {
-            heapify(arr, i, arr.length-1);
-        }
     }
 
     private static void swap(int[] arr, int i, int j) {

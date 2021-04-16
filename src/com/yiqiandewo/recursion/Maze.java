@@ -16,8 +16,7 @@ public class Maze {
         mazeSolving(maze, 5, 1);
 
     }
-
-
+    
     //2为通路 3为走过但走不通
     public static boolean mazeSolving(int[][] maze, int i, int j) {
         if ((i == 5) && (j == 6)) {

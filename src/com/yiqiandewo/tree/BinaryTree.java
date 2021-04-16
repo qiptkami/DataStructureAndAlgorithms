@@ -1,8 +1,8 @@
 package com.yiqiandewo.tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import sun.reflect.generics.tree.Tree;
+
+import java.util.*;
 
 /**
  * 二叉树
@@ -45,17 +45,46 @@ public class BinaryTree {
         inOrderWithoutRecursion(root);
         System.out.println();
 
-        System.out.println("非递归中后序");
+        System.out.println("非递归后序");
         postOrderWithoutRecursion(root);
         System.out.println();
 
         System.out.println("层次遍历");
         levelOrder(root);
         System.out.println();
+        //ThreadedBinaryTree.inOrderThreaded(root);
 
-        ThreadedBinaryTree.inOrderThreaded(root);
+        //ThreadedBinaryTree.printInOrderThreaded(root);
+        System.out.println("===");
 
-        ThreadedBinaryTree.printInOrderThreaded(root);
+        //postOrderTraversal(root);
+    }
+
+    public static void postOrderTraversal(TreeNode root) {
+
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode node = root;
+        TreeNode lastVisited = null;
+
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.offerLast(node);
+                node = node.left;
+            }
+
+            if (!stack.isEmpty()) {
+                node = stack.pollLast();
+                if (node.right == null || lastVisited == node.right) { //右子树已经访问过或者右子树不存在
+                    //直接访问根节点
+                    System.out.println(node.val + " ");
+                    lastVisited = node;
+                    node = null;
+                } else { //遍历右子树
+                    stack.offerLast(node);   //由于node已经出栈 但是node还未被访问
+                    node = node.right;
+                }
+            }
+        }
 
     }
 
@@ -87,18 +116,39 @@ public class BinaryTree {
     public static void preOrderWithoutRecursion(TreeNode root) {
         TreeNode node = root;
         Stack<TreeNode> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            node = stack.pop();
+            System.out.print(node.val + " ");
+            if (node.right != null) {  //栈是先进后出，所以先将右子树入栈
+                stack.push(node.right);
+            }
+
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+    }
+
+    public void preOrder1(TreeNode root) {
+        TreeNode node = root;
+        Deque<TreeNode> stack = new LinkedList<>();
+
         while (node != null || !stack.isEmpty()) {
             while (node != null) {
                 System.out.print(node.val + " ");
-                stack.push(node);
+                stack.offerLast(node);
                 node = node.left;
             }
+
             if (!stack.isEmpty()) {
-                node = stack.pop();
+                node = stack.pollLast();
                 node = node.right;
             }
         }
     }
+
+
 
     //非递归中序
     public static void inOrderWithoutRecursion(TreeNode root) {
@@ -106,14 +156,18 @@ public class BinaryTree {
         Stack<TreeNode> stack = new Stack<>();
 
         while (node != null || !stack.isEmpty()) {
+
+            //一直遍历到左子树最下边，边遍历边保存根节点到栈中
             while (node != null) {
                 stack.push(node);
                 node = node.left;
             }
 
+            //当p为空时，说明已经到达左子树最下边，这时需要出栈了
             if (!stack.isEmpty()) {
                 node = stack.pop();
                 System.out.print(node.val + " ");
+                //进入右子树，开始新的一轮左子树遍历
                 node = node.right;
             }
         }
@@ -167,6 +221,7 @@ public class BinaryTree {
     }
 
 }
+
 class TreeNode {
     TreeNode left;
     TreeNode right;

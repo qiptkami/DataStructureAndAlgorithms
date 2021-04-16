@@ -1,7 +1,5 @@
 package com.yiqiandewo.dynamicprogramming;
 
-import java.util.Arrays;
-
 /**
  * 0 1背包
  */

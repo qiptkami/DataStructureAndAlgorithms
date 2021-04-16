@@ -32,7 +32,7 @@ public class ShellSort {
 
     //移位
     public static void shellSortMove(int[] arr) {
-        for (int gap = arr.length/2; gap > 0 ; gap /= 2) {
+        for (int gap = arr.length / 2; gap > 0 ; gap /= 2) {
             for (int i = gap; i < arr.length; i++) {
                 int key = arr[i];
                 while (i - gap >= 0 && key < arr[i-gap]) {

@@ -19,8 +19,7 @@ public class BubbleSort {
     }
 
     public static void bubbleSort(int[] arr) {
-
-        int k = arr.length-1;
+        int k = arr.length - 1;
         for (int i = 0; i < arr.length-1; i++) {
             boolean flag = false;
             int pos = 0; //用来记录最后一次比较的位置
@@ -33,7 +32,6 @@ public class BubbleSort {
                     pos = j;
                 }
             }
-
             if (!flag) {
                 //如果flag仍然未false 则说明某一趟未交换
                 return;
