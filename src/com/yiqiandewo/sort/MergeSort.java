@@ -2,6 +2,9 @@ package com.yiqiandewo.sort;
 
 import java.util.Arrays;
 
+/**
+ * O(nlogn)
+ */
 public class MergeSort {
 
     public static void main(String[] args) {

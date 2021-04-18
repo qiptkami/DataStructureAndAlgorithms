@@ -2,7 +2,10 @@ package com.yiqiandewo.sort;
 
 import java.util.Arrays;
 
-//每趟选择最小的数 才交换
+/**
+ * 每趟选择最小的数 才交换
+ * O(n²)
+ */
 public class SelectSort {
 
     public static void main(String[] args) {

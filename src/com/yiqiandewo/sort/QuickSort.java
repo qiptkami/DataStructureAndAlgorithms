@@ -2,6 +2,9 @@ package com.yiqiandewo.sort;
 
 import java.util.Arrays;
 
+/**
+ * O(nlogn)
+ */
 public class QuickSort {
 
     public static void main(String[] args) {
@@ -10,6 +13,14 @@ public class QuickSort {
         int[] arr = new int[]{4, 5, 1, 6, 2, 7, 3, 8};
         quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
+    }
+
+    public static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid =  partition(arr, left, right);
+            quickSort(arr, left, mid - 1);
+            quickSort(arr, mid + 1, right);
+        }
     }
 
     private static int partition(int[] arr, int left, int right) {
@@ -21,6 +32,7 @@ public class QuickSort {
                 arr[i] = arr[j];
                 arr[j] = temp;
                 j++;
+
             }
         }
 
@@ -30,11 +42,4 @@ public class QuickSort {
         return j;
     }
 
-    public static void quickSort(int[] arr, int left, int right) {
-        if (left < right) {
-            int mid =  partition(arr, left, right);
-            quickSort(arr, left, mid - 1);
-            quickSort(arr, mid + 1, right);
-        }
-    }
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 插入排序思想是将一个元素插入到已经排好序的数组中，从而形成一个新的的有序数组
+ * O(n²)
  */
 public class InsertSort {
 
@@ -17,12 +18,13 @@ public class InsertSort {
 
     public static void insertSort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            int key = arr[i];
-            while (i > 0 && (arr[i-1] > key)) {
-                arr[i] = arr[i-1];
-                i--;
+            int temp = i;
+            int key = arr[temp];
+            while (temp > 0 && (arr[temp-1] > key)) {
+                arr[temp] = arr[temp-1];
+                temp--;
             }
-            arr[i] = key;
+            arr[temp] = key;
         }
     }
 }

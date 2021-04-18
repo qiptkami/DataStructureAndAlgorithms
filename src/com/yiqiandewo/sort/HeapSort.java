@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 堆排序
+ * O(nlogn)
  */
 public class HeapSort {
 

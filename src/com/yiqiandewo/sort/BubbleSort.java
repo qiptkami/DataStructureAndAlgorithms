@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * 冒泡排序的思想，我们要把相邻的元素两两比较，根据大小来交换元素的位置
  * 相邻的两个元素冒泡
+ * O(n²)
  */
 public class BubbleSort {
 

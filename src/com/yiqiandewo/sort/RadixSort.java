@@ -2,6 +2,9 @@ package com.yiqiandewo.sort;
 
 import java.util.Arrays;
 
+/**
+ * O(n*max)
+ */
 public class RadixSort {
     public static void main(String[] args) {
         int[] arr = {3, 45, 12, 56, 1, 876, 31, 1234, 42, 15};
