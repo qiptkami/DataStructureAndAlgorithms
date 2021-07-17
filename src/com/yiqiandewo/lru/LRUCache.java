@@ -2,6 +2,9 @@ package com.yiqiandewo.lru;
 
 import java.util.HashMap;
 
+/**
+ * LinkedHashMap
+ */
 public class LRUCache {
 
     class DLinkedNode {
